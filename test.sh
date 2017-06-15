@@ -3,7 +3,7 @@
 ###########################################
 #Change this to the current assignment name:
 
-PROG=ex3b  #No spaces or qutes ""
+PROG=$1  #No spaces or qutes ""
 
 ############################################
 
