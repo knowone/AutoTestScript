@@ -31,7 +31,9 @@ do
 
 ## Add more tests by changing number from 9 to whatever ##
   echo
-  echo '~~~~~~~~~~Testing '$PROGNAME'~~~~~~~~~~'
+  echo '~~~~~~~~~~~~~~~~~~~~~~~~~~~~ Testing '$PROGNAME' ~~~~~~~~~~~~~~~~~~~~~~~~~~~~' 
+  echo
+  echo '~~~~~~ Running tests: ~~~~~~'
   for i in {0..9}
 
 ## ---------------------------------------------------- ##
@@ -51,10 +53,12 @@ do
         echo "Test Passed Successfully!"
       fi
     fi
-
+  
   done
+ 
+  echo '~~~~~~~~~~~~~~~~~~~~~ Running Valgrind for '$PROGNAME '~~~~~~~~~~~~~~~~~~~~~'
   echo
-  echo "Running Valgrind:"
+  echo "~~~~~ Running Valgrind ~~~~~"
 
 ## Add more tests by changing number from 9 to whatever ##
 
@@ -74,6 +78,7 @@ do
       grep -s -A 1 'SUMMARY:' $BIN_FDR/valgrind_$PROGNAME'_'$i.out
     fi 
   done
+ echo '~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~'
 done
 
 #delete output folder if No issues in any test
