@@ -30,7 +30,8 @@ do
 
 
 ## Add more tests by changing number from 9 to whatever ##
-
+  echo
+  echo '~~~~~~~~~~Testing '$PROGNAME'~~~~~~~~~~'
   for i in {0..9}
 
 ## ---------------------------------------------------- ##
@@ -52,7 +53,7 @@ do
     fi
 
   done
-
+  echo
   echo "Running Valgrind:"
 
 ## Add more tests by changing number from 9 to whatever ##
@@ -77,6 +78,8 @@ done
 
 #delete output folder if No issues in any test
 if [ $FLAG -eq 0 ]; then
+  echo
+  echo 'All tests completed successfuly. Deleting output folder...'
   rm -rf $BIN_FDR
 fi
 echo "Finished"
