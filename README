@@ -25,8 +25,16 @@ To make the program work:
  and then run: test.sh progname
 )
 
-If you have questions and suggestions please cpntact me at:
-omersc@students.hadassah.ac.il
+Important notes:
+a. In this version - program names (i.e. ex3a ect.) must be in a folder with the SAME NAME
+b. Tests file names must be in this format: prog_testxx.in (i.e. ex3a_test01.in etc..)
+This will be improved in future versions.
+
+If you have questions and suggestions please contact me at:
+omersc at students (dot) hadassah (ac il)
+
+Script available in my github: github.com/knowone/AutoTestScript 
+You are welcome to contribute to the repository.
 
 Use this at your own risk!
 
