@@ -32,11 +32,11 @@ BIN_FDR=./$BIN_NAME
 TEST_OUTPUT_FDR=./$TEST_OUTPUT
 FLAG=0
 
-if [ $($@ | head -c1 | wc -c) -eq 0 ]; then
+if [ "$#" -eq 0 ]; then
 	echo "Usage: test.sh <ProgramNames ...>"
 else
 
-rm -rf $BIN_FDR
+rm -rf $BIN_FDRhead
 mkdir $BIN_FDR
 rm -rf $TEST_OUTPUT_FDR
 mkdir $TEST_OUTPUT_FDR
