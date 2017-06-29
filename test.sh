@@ -32,6 +32,10 @@ BIN_FDR=./$BIN_NAME
 TEST_OUTPUT_FDR=./$TEST_OUTPUT
 FLAG=0
 
+if [ $($@ | head -c1 | wc -c) -eq 0 ]; then
+	echo "Usage: test.sh <ProgramNames ...>"
+else
+
 rm -rf $BIN_FDR
 mkdir $BIN_FDR
 rm -rf $TEST_OUTPUT_FDR
@@ -138,5 +142,5 @@ else
   echo '** See full test results in '$TEST_OUTPUT 'folder'...
 fi
 echo "Finished!"
-
+fi
 
