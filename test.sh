@@ -11,12 +11,13 @@ SOL_NAME=sol
 ## Name of folder with all the tests:
 TESTS_NAME=tests
 
-
+## Highest number of tests available
+MAX_TEST=9
 ############################################
 TEST_OUTPUT=output
 BIN_NAME=out
 
-SRC_FDR=SRC_NAME
+SRC_FDR=$SRC_NAME
 SOL_FDR=./$SOL_NAME
 TESTS_FDR=./$TESTS_NAME
 
@@ -38,7 +39,8 @@ do
   TEST=$TESTS_FDR
   TEST_RES=$TEST_OUTPUT_FDR
   COMPILE= g++ -Wall $SRC -o $MY_SOL
-  TNAME=_test0	##test file names are in the form ${PROGNAME}_test0$#
+  
+  TNAME= ##test file names are in the form ${PROGNAME}_test0$#
 
   $COMPILE
 
@@ -49,10 +51,17 @@ do
   echo '~~~~~~~~~~~~~~~~~~~~~~~~~~~~ Testing '$PROGNAME' ~~~~~~~~~~~~~~~~~~~~~~~~~~~~' 
   echo
   echo '~~~~~~ Running tests: ~~~~~~'
-  for i in 0 9
+  
+  i=0
+  while [ $i -le $MAX_TEST ]
 
 ## ---------------------------------------------------- ##
   do
+    if [ $i -le 9 ]; then	
+	TNAME='_test0'
+    else			##Case where # of tests > 9
+	TNAME='_test'
+    fi
     if [ -f $TESTS_FDR/$PROGNAME$TNAME$i.in ]; then ##If the test exists do:
       echo 'Running Test0'$i':'
       $MY_SOL <$TESTS_FDR/$PROGNAME$TNAME$i.in >$TEST_RES/res0$i.out	##Run my program
@@ -70,7 +79,7 @@ do
         echo "Test Passed Successfully!"
       fi
     fi
-  
+  i=$(( i+1 ))
   done
  
   echo '~~~~~~~~~~~~~~~~~~~~~ Running Valgrind for '$PROGNAME '~~~~~~~~~~~~~~~~~~~~~'
@@ -79,21 +88,30 @@ do
 
 ## Add more tests by changing number from 9 to whatever ##
 
-  for i in 0 9
+  i=0
+  while [ $i -le $MAX_TEST ]
 
 ## ---------------------------------------------------- ##
   do
+    if [ $i -le 9 ]; then	
+	TNAME='_test0'
+    else			##Case where # of tests > 9
+	TNAME='_test'
+    fi
+	## Test file name exists in the output directory, so run valgrind on it
     if [[ $(ls $TESTS_NAME | grep $PROGNAME$TNAME$i.in | head -c1 | wc -c) -ne 0 ]]; then
    
       valgrind $MY_SOL <$TESTS_FDR/$PROGNAME$TNAME$i.in >$TEST_RES/valgrind_$PROGNAME'_'$i.out 2>&1
   
     fi
+##Search for SUMMARY in valgrind ouput, if exists and valgrind was perfomred (head of file is not empty)
     if [[ $(grep -s -A 1 'SUMMARY:' $TEST_RES/valgrind_$PROGNAME'_'$i.out | head -c1 | wc -c) -ne 0 ]]; then  
       echo 
       echo valgrind$i.out':'
       echo 	
       grep -s -A 1 'SUMMARY:' $TEST_RES/valgrind_$PROGNAME'_'$i.out
-    fi 
+    fi
+  i=$(( i+1 ))
   done
  echo '~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~'
 done
