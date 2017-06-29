@@ -1,1 +1,32 @@
-This script is intended for testing projects in the 
+This script is intended for testing projects in the CS Intro/Modular Programming course.
+The script runs all the provided tests, comparing your solution with the solution the course has
+provided.
+The script also performs a memory leak check with a program called valgrind (type 'valgrind --help' without quotes in your terminal/shell for more information) and displays the results.
+
+To make the program work:
+1. unpack (extract) the solution binaries (often called "school solution") named ex0a, ex1b etc, and the test files (usually named "ex0a_test00.in" and similar).
+2. Move the school solution to the folder "(AutoTestScript)/sol/" (Meaning, inside the folder)
+3. Move the test files to the folder "(AutoTestScript)/tests/".
+4. Put the folder AutoTestScript with your project files, alongside the source file folders.
+   If your main program is called ex3a.cc and it is in the folder "/home/csintro/ex3/ex3a"
+   then AutoTestScript needs to be in the folder "/home/csintro/ex3/" in order to work without changing it.
+4.b. Alternatively, you can copy the source file to the folder "/AutoTestScript/src/" and change a line in the
+     script.
+5. Run the script test.sh from your terminal using this line:
+	./test.sh progname1 progname2
+   For example, if we have a folder ex2a and the source file should also be ex2a then we can run:
+	./test.sh ex2a
+   And see the results on the terminal.
+(For some users, you can run:
+	test.sh progname1 progname2 progname3
+ 
+ In some cased you need to apply the following before executing the script:
+	chmod 0755 test.sh
+ and then run: test.sh progname
+)
+
+If you have questions and suggestions please cpntact me at:
+omersc@students.hadassah.ac.il
+
+Use this at your own risk!
+
