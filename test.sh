@@ -32,11 +32,7 @@ BIN_FDR=./$BIN_NAME
 TEST_OUTPUT_FDR=./$TEST_OUTPUT
 FLAG=0
 
-if [ "$#" -eq 0 ]; then
-	echo "Usage: test.sh <ProgramNames ...>"
-else
-
-rm -rf $BIN_FDRhead
+rm -rf $BIN_FDR
 mkdir $BIN_FDR
 rm -rf $TEST_OUTPUT_FDR
 mkdir $TEST_OUTPUT_FDR
@@ -89,7 +85,7 @@ do
   i=$(( i+1 ))
   done
  echo '~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~'
-done
+ echo
 
 ## Add more tests by changing number from 9 to whatever ##
 ## Improve: get num of tests from user. Default is 9
@@ -130,6 +126,8 @@ done
   done
  
  echo '~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~'
+ echo
+done
 
 #delete output folder if No issues in any test
 rm -rf $BIN_FDR
@@ -141,6 +139,8 @@ else
   echo '* Some tests failed :( Scroll up to see the tests differences.'
   echo '** See full test results in '$TEST_OUTPUT 'folder'...
 fi
+echo 
 echo "Finished!"
-fi
+echo 
+
 
